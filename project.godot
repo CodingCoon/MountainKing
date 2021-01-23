@@ -1,0 +1,204 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Task",
+"class": "ChopWoodTask",
+"language": "GDScript",
+"path": "res://src/resource/tree/ChopWoodTask.gd"
+}, {
+"base": "Job",
+"class": "DoNotDisturbJob",
+"language": "GDScript",
+"path": "res://src/job/DoNotDisturbJob.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Dwarf",
+"language": "GDScript",
+"path": "res://src/actor/Dwarf.gd"
+}, {
+"base": "Task",
+"class": "FindResourceTask",
+"language": "GDScript",
+"path": "res://src/resource/FindResourceTask.gd"
+}, {
+"base": "Task",
+"class": "GetAJobTask",
+"language": "GDScript",
+"path": "res://src/task/GetAJobTask.gd"
+}, {
+"base": "Task",
+"class": "GoToPointTask",
+"language": "GDScript",
+"path": "res://src/task/GoToPointTask.gd"
+}, {
+"base": "GoToPointTask",
+"class": "GoToTargetTask",
+"language": "GDScript",
+"path": "res://src/task/GoToTargetTask.gd"
+}, {
+"base": "Reference",
+"class": "Job",
+"language": "GDScript",
+"path": "res://src/job/Job.gd"
+}, {
+"base": "Node2D",
+"class": "KeyController",
+"language": "GDScript",
+"path": "res://src/level/KeyController.gd"
+}, {
+"base": "Job",
+"class": "LumberjackJob",
+"language": "GDScript",
+"path": "res://src/resource/tree/LumberjackJob.gd"
+}, {
+"base": "Node",
+"class": "NameService",
+"language": "GDScript",
+"path": "res://src/actor/NameService.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Overseer",
+"language": "GDScript",
+"path": "res://src/actor/Overseer.gd"
+}, {
+"base": "Reference",
+"class": "ResourceType",
+"language": "GDScript",
+"path": "res://src/resource/ResourceType.gd"
+}, {
+"base": "Node2D",
+"class": "Signpost",
+"language": "GDScript",
+"path": "res://src/actor/Signpost.gd"
+}, {
+"base": "Task",
+"class": "StockResourceTask",
+"language": "GDScript",
+"path": "res://src/resource/StockResourceTask.gd"
+}, {
+"base": "Reference",
+"class": "Task",
+"language": "GDScript",
+"path": "res://src/task/Task.gd"
+}, {
+"base": "StaticBody2D",
+"class": "TreeEntity",
+"language": "GDScript",
+"path": "res://src/resource/tree/_internal/TreeEntity.gd"
+}, {
+"base": "CanvasItem",
+"class": "TreeRes",
+"language": "GDScript",
+"path": "res://src/resource/tree/TreeRes.gd"
+}, {
+"base": "Job",
+"class": "UnemployedJob",
+"language": "GDScript",
+"path": "res://src/job/UnemployedJob.gd"
+}, {
+"base": "Task",
+"class": "WaitTask",
+"language": "GDScript",
+"path": "res://src/task/WaitTask.gd"
+}, {
+"base": "StaticBody2D",
+"class": "Warehouse",
+"language": "GDScript",
+"path": "res://src/actor/Warehouse.gd"
+}, {
+"base": "Node2D",
+"class": "WorkingArea",
+"language": "GDScript",
+"path": "res://src/resource/tree/WorkingArea.gd"
+} ]
+_global_script_class_icons={
+"ChopWoodTask": "",
+"DoNotDisturbJob": "",
+"Dwarf": "",
+"FindResourceTask": "",
+"GetAJobTask": "",
+"GoToPointTask": "",
+"GoToTargetTask": "",
+"Job": "",
+"KeyController": "",
+"LumberjackJob": "",
+"NameService": "",
+"Overseer": "",
+"ResourceType": "",
+"Signpost": "",
+"StockResourceTask": "",
+"Task": "",
+"TreeEntity": "",
+"TreeRes": "",
+"UnemployedJob": "",
+"WaitTask": "",
+"Warehouse": "",
+"WorkingArea": ""
+}
+
+[application]
+
+config/name="MountainKing"
+run/main_scene="res://src/level/AStarLevel.tscn"
+
+[autoload]
+
+Global="*res://src/actor/Global.gd"
+
+[debug]
+
+gdscript/warnings/shadowed_variable=false
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+fire={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+switch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_render/layer_1="Dwarf"
+2d_render/layer_2="Overseer"

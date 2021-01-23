@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/resource/tree/GrowingTrees.png" type="Texture" id=1]
+[ext_resource path="res://src/resource/tree/_internal/TreeEntity.gd" type="Script" id=2]
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.73422, -41.8381 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 208, 16, 64, 96 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+position = Vector2( -77.6086, 544.343 )
+scale = Vector2( 2.66963, 3.02738 )
+polygon = PoolVector2Array( 25.6386, -180.911, 26.9365, -181.197, 29.7682, -181.431, 32.1869, -180.729, 32.7768, -179.272, 31.9509, -178.544, 30.4761, -178.492, 30.5056, -178.492, 29.8862, -178.18, 28.6097, -178.107, 28.6345, -178.129, 28.0869, -178.31, 27.1135, -178.466, 26.4351, -178.908, 25.9926, -179.819 )
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="Right" type="Node2D" parent="."]
+position = Vector2( 13, 0 )
+
+[node name="Bottom" type="Node2D" parent="."]
+position = Vector2( 0, 8 )
+
+[node name="Left" type="Node2D" parent="."]
+position = Vector2( -12, 0 )
