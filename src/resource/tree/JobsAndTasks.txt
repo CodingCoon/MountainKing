@@ -1,0 +1,71 @@
+import java.util.function.Supplier;
+
+public class LumberjackJob extends Job {
+
+
+    //_______________________________________________ Parameters
+    private StateContainer sc = new StateContainer();
+
+    //_______________________________________________ Initialize
+    //_______________________________________________ Methods
+    @Override
+    protected Task createTask() {
+        switch (sc.state) {
+            case FIND_TREE: return new FindTreeTask();
+            case RESERVE_TREE: return new ReserveTreeTask();
+        }
+    }
+
+    @Override
+    protected void taskFinished() {
+        switch(sc.state) {
+            case FIND_TREE:
+                handleFindTree();
+                break;
+            case RESERVE_TREE:
+                handleReserveTree();
+                break;
+        }
+    }
+
+    private void handleReserveTree() {
+        WorkingArea wa = ((ReserveTreeTask) currentTask).getWorkingArea();
+        if (wa == null) {
+            sc.state = State.FIND_TREE;
+        }
+        else {
+            sc.state = State.RESERVE_TREE;
+        }
+    }
+
+    private void handleFindTree() {
+        Tree tree = ((FindTreeTask) currentTask).getTree();
+        if (tree == null) {
+            // Gesucht und nicht gefunden:
+            sc.notFoundCounter++;
+            if (sc.notFoundCounter < 10) {
+                // mach ne Pause
+            }
+        }
+        else {
+            sc.notFoundCounter = 0;
+            sc.state = State.RESERVE_TREE;
+        }
+    }
+
+    //_______________________________________________ Inner CLasses
+    static class StateContainer {
+        int notFoundCounter;
+        State state = State.FIND_TREE;
+    }
+
+    enum State {
+        FIND_TREE,
+        RESERVE_TREE,
+        GO_TO_TREE,
+        CHOP_TREE,
+        GO_TO_STOCK,
+        STOCK_GOODS
+    }
+    //_______________________________________________ End
+}

@@ -21,10 +21,10 @@ polygon = PoolVector2Array( 27.3593, -180.785, 28.0784, -181.202, 30.7969, -180.
 position = Vector2( 0, -6 )
 
 [node name="Right" type="Node2D" parent="."]
-position = Vector2( 8, 0 )
+position = Vector2( 17, 0 )
 
 [node name="Bottom" type="Node2D" parent="."]
 position = Vector2( 0, 5 )
 
 [node name="Left" type="Node2D" parent="."]
-position = Vector2( -8, 0 )
+position = Vector2( -17, 0 )

@@ -37,6 +37,9 @@ func hasCarryLimit():
 	return carryLimit == carriedObjects.size()
 
 func assignJob(job):
+	if (dwarfId == "#8") :
+		print("#8 " + job.get_class())	
+	
 	assert (job)
 #	print("gets job: " + job.get_class())
 	self.job = job 

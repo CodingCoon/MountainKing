@@ -17,8 +17,10 @@ func _init(owner: Dwarf, targetLoc: Vector2, equipment = "").(owner):
 func start():
 	self.startLocation = owner.get_global_position()
 	var navigation = owner.get_node("../..")
-	path = navigation.get_simple_path(owner.get_global_position(), targetLocation, true)
-	print("path: " + str(path.size()))
+	path = navigation.get_simple_path(startLocation, targetLocation, true)
+	#print("path: " + str(path.size()))
+	if path.size() == 0:
+		return "unknown path from " + str(startLocation) + " to " + str(targetLocation)
 
 func process(delta):
 	pass
@@ -26,7 +28,7 @@ func process(delta):
 func physicsProcess(delta):
 	if path.empty():
 		finish()
-		print("GoTo finished")
+		#print("GoTo finished")
 	else:
 		var moveDistance = MAX_SPEED * delta
 		var targetPosition = determineTargetPosition(moveDistance)

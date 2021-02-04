@@ -11,6 +11,9 @@ func _ready():
 func _process(delta: float):
 	updateUnmeployeed(delta)
 	
+func getTarget() :
+	return $Target.get_global_position()
+	
 func askForAJob(requester: Dwarf):
 	if not unemployeed.has(requester):
 		unemployeed[requester] = 0

@@ -32,6 +32,7 @@ func _init():
 
 func _ready():
 	updateUI()
+	value = size
 
 func decrementValue():
 	value -= 1
@@ -66,7 +67,6 @@ func updateUI():
 		oldshownNode.copyReservations(newShownNode)
 
 func _process(delta):
-	return 
 #	if name != "Tree":
 #		return
 	
@@ -234,15 +234,18 @@ func dropNewTree(treePos):
 func vector(source, target) -> Vector2:
 	return Vector2(target.x - source.x, target.y - source.y)
 
+func getSide(worker: Dwarf) -> String:
+	return getShownNode().getSide(worker)
+
 func hasFreeWorkingArea() -> bool:
 	return getShownNode().hasFreeWorkingArea()
 
 func reserve(worker: Dwarf):
-	print(str(self) + "  reserve " + str(worker))
+	#print(str(self) + "  reserve " + str(worker))
 	return getShownNode().reserve(worker)
 
 func cancel(worker: Dwarf):
-	print(str(self) + "  cancel " + str(worker))
+	#print(str(self) + "  cancel " + str(worker))
 	return getShownNode().cancel(worker)
 	
 #func _draw():

@@ -10,7 +10,7 @@ func _init(owner: Dwarf).(owner):
 
 func initTasks(owner: Dwarf) -> Array:
 	overseer = owner.get_node("../Overseer")
-	var go = GoToTargetTask.new(owner, overseer)
+	var go = GoToPointTask.new(owner, overseer.getTarget())
 	var ask = load("res://src/task/GetAJobTask.gd").new(owner, overseer)
 	var wait = WaitTask.new(owner)
 	return [go, ask, wait]

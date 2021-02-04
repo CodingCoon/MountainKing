@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Task",
 "class": "FindResourceTask",
 "language": "GDScript",
-"path": "res://src/resource/FindResourceTask.gd"
+"path": "res://src/resource/tree/FindTreeTask.gd"
 }, {
 "base": "Task",
 "class": "GetAJobTask",
@@ -58,6 +58,11 @@ _global_script_classes=[ {
 "class": "LumberjackJob",
 "language": "GDScript",
 "path": "res://src/resource/tree/LumberjackJob.gd"
+}, {
+"base": "Node",
+"class": "LumberjackJobContainer",
+"language": "GDScript",
+"path": "res://src/resource/tree/LumberjackJobContainer.gd"
 }, {
 "base": "Node",
 "class": "NameService",
@@ -130,6 +135,7 @@ _global_script_class_icons={
 "Job": "",
 "KeyController": "",
 "LumberjackJob": "",
+"LumberjackJobContainer": "",
 "NameService": "",
 "Overseer": "",
 "ResourceType": "",

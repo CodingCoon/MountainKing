@@ -4,6 +4,9 @@ var stock : Dictionary
 
 # reserve
 
+func getTarget():
+	return $Target.get_global_position()
+
 func store(resourceType, amount):
 	if stock.has(resourceType):
 		stock[resourceType] += amount

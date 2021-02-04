@@ -19,3 +19,6 @@ region_filter_clip = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 24 )
 shape = SubResource( 1 )
+
+[node name="Target" type="Node2D" parent="."]
+position = Vector2( 10, 30 )

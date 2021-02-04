@@ -7,7 +7,8 @@ func _init(owner: Dwarf, tree: TreeRes).(owner):
 	self.tree = tree
 
 func start():
-	owner.updateAnimation("right_chop")		# side from treeRes
+	var side = tree.getSide(owner)
+	owner.updateAnimation(side + "_chop")		# side from treeRes
 
 func process(delta:float): 
 	progress += delta

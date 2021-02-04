@@ -19,7 +19,14 @@ func copyReservations(var newTree : TreeEntity):
 #	newTree.bottomWorker = bottomWorker
 #	bottomWorker = null
 
+func getSide(worker: Dwarf):			# notice that a left worker chops to the right and vice versa
+	if leftWorker == worker:
+		return "right"
+	elif rightWorker == worker:
+		return "left"
 
+
+# Returns a working area if the reservation succeeded 
 func reserve(worker: Dwarf):
 	if not leftWorker:
 		leftWorker = worker
@@ -34,7 +41,8 @@ func reserve(worker: Dwarf):
 #		bottomWorker = worker
 #		return $Bottom
 	else:
-		assert(false, "Don't reserve without a free working area.")
+		return null
+		#assert(false, "Don't reserve without a free working area. Tree@ " + str(.global_position() + "  Dwarf@" + str(worker.global_position())))
 
 func cancelAll():
 	if leftWorker:

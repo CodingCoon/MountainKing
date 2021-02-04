@@ -12,8 +12,8 @@ func _init(owner: Dwarf):
 func getOwner() -> Dwarf:
 	return owner
 
-func start():
-	pass
+func start() -> String:
+	return ""
 
 func process(delta):
 	pass
