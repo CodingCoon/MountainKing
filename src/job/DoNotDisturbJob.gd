@@ -1,18 +1,19 @@
 class_name DoNotDisturbJob extends Job
 
-func get_class():
-	return "DoNotDisturbJob"
-
-func _init(owner: Dwarf).(owner):
+#---------------------------------------------------- Preload
+#---------------------------------------------------- Parameters
+#---------------------------------------------------- Initialize
+func _init().("DoNotDisturbJob"):
 	pass
 
-func initTasks(owner: Dwarf) -> Array:
+#---------------------------------------------------- Methods
+func createTask(owner: Dwarf) -> Task:
 	var generator = RandomNumberGenerator.new()
 	generator.randomize()
-	var newLocation = Vector2(generator.randi_range(0, 1000), generator.randi_range(0, 600))
+	
+	var newLocation = Vector2(generator.randi_range(0, 1000), generator.randi_range(0, 600))			# todo Map coords
 	var goSomewhereElse = load("res://src/task/GoToPointTask.gd").new(owner, newLocation)
-	return [goSomewhereElse]
+	return goSomewhereElse;
 
-func tasksDone(owner: Dwarf):
-	var newJob = load("res://src/job/UnemployedJob.gd")
-	owner.assignJob(newJob.new(owner))
+#---------------------------------------------------- Inner CLasses
+#---------------------------------------------------- End

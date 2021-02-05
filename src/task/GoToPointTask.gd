@@ -1,5 +1,7 @@
 class_name GoToPointTask extends Task
 
+#---------------------------------------------------- Preload
+#---------------------------------------------------- Parameters
 const MAX_SPEED : float = 90.0
 
 var displayTask : bool = true
@@ -8,12 +10,12 @@ var targetLocation : Vector2
 var path 		   : PoolVector2Array = PoolVector2Array()
 var equipment
 
-func get_class(): return "GoToPointTask/" + str(get_instance_id())
 
-func _init(owner: Dwarf, targetLoc: Vector2, equipment = "").(owner):
+#---------------------------------------------------- Initialize
+func _init(owner: Dwarf, targetLoc: Vector2, equipment = "").(owner, "GoToPointTask/" + str(get_instance_id())):
 	self.targetLocation = targetLoc
 	self.equipment = equipment
-
+#---------------------------------------------------- Public Methods
 func start():
 	self.startLocation = owner.get_global_position()
 	var navigation = owner.get_node("../..")
@@ -21,9 +23,6 @@ func start():
 	#print("path: " + str(path.size()))
 	if path.size() == 0:
 		return "unknown path from " + str(startLocation) + " to " + str(targetLocation)
-
-func process(delta):
-	pass
 
 func physicsProcess(delta):
 	if path.empty():
@@ -38,6 +37,23 @@ func physicsProcess(delta):
 		owner.updateAnimation(animation)
 		moveOwner(motion)
 
+func display():
+	if displayTask:
+		var position = owner.position
+		var ownerSize = owner.get_node("Collision").position;
+		
+		var last = owner.get_global_position()
+		var index = 0;
+		for i in path:
+			var from = last - position
+			var to = i - position
+			
+			owner.draw_line(from, to, Color.blue.darkened(1.0 * index/path.size()), 1)
+			last = i
+			index += 1
+
+#---------------------------------------------------- Abstract Methods
+#---------------------------------------------------- Private Methods
 func getAnimationDirection(motion: Vector2) -> String:
 	var animationDirection
 	
@@ -72,17 +88,5 @@ func determineTargetPosition(distance: float) -> float :
 		path.remove(0)
 	return currentPoint
 
-func display():
-	if displayTask:
-		var position = owner.position
-		var ownerSize = owner.get_node("Collision").position;
-		
-		var last = owner.get_global_position()
-		var index = 0;
-		for i in path:
-			var from = last - position
-			var to = i - position
-			
-			owner.draw_line(from, to, Color.blue.darkened(1.0 * index/path.size()), 1)
-			last = i
-			index += 1
+#---------------------------------------------------- Inner Classes
+#---------------------------------------------------- End

@@ -1,58 +1,91 @@
 class_name Job
 
+#_______________________________________________ Import
 const Dwarf = preload("res://src/actor/Dwarf.gd")
 
-var tasks : Array
+#_______________________________________________ Parameters
 var currentTask : Task
+var finished = false
+var name
 
-func _init(owner: Dwarf):
-	tasks = initTasks(owner)
+#_______________________________________________ Initialize
+func _init(name):
+	self.name = name
 
-func initTasks(owner: Dwarf) -> Array:
-	assert (false, "ERROR") # has to get overriden
-	return [] 
-
-func repeat(owner: Dwarf):
-	tasks = initTasks(owner)
-
-func tasksDone(owner: Dwarf):
-	pass # override as you wish 
+#_______________________________________________ Methods
+func get_class():
+	return name
 
 func process(owner: Dwarf, delta: float):
-	setupTask(owner)
-	currentTask.process(delta)
-	owner.update()
+	assert(! finished, "don't process a finished job: " + get_class())
+	# if no 
+	if ! currentTask:
+		currentTask = createTask(owner)
+		
+		if ! currentTask:
+			finish(owner)
+			return
+		else :
+			var error = currentTask.start()
+			if ! error :
+				abort(owner, error)
+				return
+	
+	# process the task
+	currentTask.process(delta);
+	
+	# check if task finished
+	if currentTask.isFinished():
+		taskFinished(owner)
+		currentTask = null
+
 
 func physicsProcess(owner: Dwarf, delta: float):
-	setupTask(owner)
+	assert(! finished, "don't process a finished job: " + get_class())
 	
-	currentTask.physicsProcess(delta)
-	owner.update()
+	if ! currentTask:
+		currentTask = createTask(owner)
+		
+		if ! currentTask:
+			finish(owner)
+			return
+		else :
+			var error = currentTask.start()
+			if ! error :
+				abort(owner, error)
+				return
+	
+	# process the task on the physics layer
+	currentTask.physicsProcess(delta);
+	
+	# check if task finished
 	if currentTask.isFinished():
+		taskFinished(owner)
 		currentTask = null
-		if tasks.empty():
-			tasksDone(owner);
 
-func setupTask(owner: Dwarf):
-	if !currentTask:
-		currentTask = tasks.pop_front()
-#		print("Pop task: " + currentTask.get_class() + " of " + get_class() )
-		assert(currentTask, "popped task is null")
-		var started = currentTask.start()
-		if started && ! started.empty():
-			print(str(currentTask) + " fails with " + started)
-			abort(owner)
-
-func abort(owner: Dwarf):
+func abort(owner: Dwarf, error):
 	print("Dwarf " + str(owner.dwarfId) + " aborts its job and gets unemployed.")
-	owner.assignJob(load("res://src/job/UnemployedJob.gd").new(owner))
+	print("Reason: " + error)
+	finished = true;
+	owner.assignJob(load("res://src/job/UnemployedJob.gd").new())
 
-#func physicsProcess(owner: Dwarf, delta: float):
-#	if currentTask:
-#		print("Job and Task " + str(currentTask))
-#		currentTask.physicsProcess(delta)
-#		owner.update()
+func finish(owner: Dwarf):
+	finished = true;
+	var newJob = load("res://src/job/UnemployedJob.gd")
+	owner.assignJob(newJob.new())
 
 func draw():
 	if (currentTask):		# possible, that initially its nil
 		currentTask.display()
+
+#_______________________________________________ Abstract Methods
+func createTask(owner: Dwarf) -> Task:
+	assert(true, "overwrite createTask: " + get_class())
+	return null
+	
+func taskFinished(owner: Dwarf):
+	assert(true, "overwrite taskFinished: " + get_class())
+	pass
+
+#_______________________________________________ Inner CLasses
+#_______________________________________________ End

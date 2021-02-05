@@ -60,11 +60,6 @@ _global_script_classes=[ {
 "path": "res://src/resource/tree/LumberjackJob.gd"
 }, {
 "base": "Node",
-"class": "LumberjackJobContainer",
-"language": "GDScript",
-"path": "res://src/resource/tree/LumberjackJobContainer.gd"
-}, {
-"base": "Node",
 "class": "NameService",
 "language": "GDScript",
 "path": "res://src/actor/NameService.gd"
@@ -73,6 +68,11 @@ _global_script_classes=[ {
 "class": "Overseer",
 "language": "GDScript",
 "path": "res://src/actor/Overseer.gd"
+}, {
+"base": "Task",
+"class": "ReserveResourceTask",
+"language": "GDScript",
+"path": "res://src/resource/tree/ReserveTreeTask.gd"
 }, {
 "base": "Reference",
 "class": "ResourceType",
@@ -118,11 +118,6 @@ _global_script_classes=[ {
 "class": "Warehouse",
 "language": "GDScript",
 "path": "res://src/actor/Warehouse.gd"
-}, {
-"base": "Node2D",
-"class": "WorkingArea",
-"language": "GDScript",
-"path": "res://src/resource/tree/WorkingArea.gd"
 } ]
 _global_script_class_icons={
 "ChopWoodTask": "",
@@ -135,9 +130,9 @@ _global_script_class_icons={
 "Job": "",
 "KeyController": "",
 "LumberjackJob": "",
-"LumberjackJobContainer": "",
 "NameService": "",
 "Overseer": "",
+"ReserveResourceTask": "",
 "ResourceType": "",
 "Signpost": "",
 "StockResourceTask": "",
@@ -146,8 +141,7 @@ _global_script_class_icons={
 "TreeRes": "",
 "UnemployedJob": "",
 "WaitTask": "",
-"Warehouse": "",
-"WorkingArea": ""
+"Warehouse": ""
 }
 
 [application]

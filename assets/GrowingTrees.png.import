@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GrowingTrees.png-51e3eb37f66ce8b91328b24e2944f2ee.stex"
+path="res://.import/GrowingTrees.png-56e5a83ca945481b93534d4c95b53152.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/resource/tree/GrowingTrees.png"
-dest_files=[ "res://.import/GrowingTrees.png-51e3eb37f66ce8b91328b24e2944f2ee.stex" ]
+source_file="res://assets/GrowingTrees.png"
+dest_files=[ "res://.import/GrowingTrees.png-56e5a83ca945481b93534d4c95b53152.stex" ]
 
 [params]
 

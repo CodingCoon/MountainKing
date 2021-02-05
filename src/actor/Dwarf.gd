@@ -14,7 +14,7 @@ func _init():
 
 func _ready():
 #	print(str(self) + " ready")
-	job = load("res://src/job/UnemployedJob.gd").new(self)
+	job = load("res://src/job/UnemployedJob.gd").new()
 
 func _process(delta):
 	job.process(self, delta)
