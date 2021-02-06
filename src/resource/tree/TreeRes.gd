@@ -24,7 +24,7 @@ const UNWORKED_TIME_TO_REGROW : int = 10
 var unworkedProcess : float = 0.0
 
 const WORKLOAD : float = 10.0 # delta to earn one value
-var resourceType = ResourceType.ResourceType.TIMBER	# todo to const
+var resourceType = ResourceType.Type.TIMBER	# todo to const
 var value : int = size
 
 func _init():
@@ -37,7 +37,7 @@ func _ready():
 func decrementValue():
 	value -= 1
 	growing = false
-	print("Baum mit value : " + str(value))
+	#print("Baum mit value : " + str(value))
 	if value == 0:
 		print("Baum tot")
 		getShownNode().cancelAll()

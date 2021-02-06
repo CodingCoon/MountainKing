@@ -1,11 +1,11 @@
-class_name FindResourceTask extends Task
+class_name FindTreeTask extends Task
 
 #---------------------------------------------------- Preload
 #---------------------------------------------------- Parameters
 var foundTree
 
 #---------------------------------------------------- Initialize
-func _init(owner: Dwarf).(owner):
+func _init(owner: Dwarf).(owner, "FindTreeTask"):
 	pass 
 	
 #---------------------------------------------------- Methods

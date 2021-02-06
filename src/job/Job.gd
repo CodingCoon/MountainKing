@@ -18,6 +18,8 @@ func get_class():
 
 func process(owner: Dwarf, delta: float):
 	assert(! finished, "don't process a finished job: " + get_class())
+	owner.update()
+	
 	# if no 
 	if ! currentTask:
 		currentTask = createTask(owner)
@@ -27,7 +29,7 @@ func process(owner: Dwarf, delta: float):
 			return
 		else :
 			var error = currentTask.start()
-			if ! error :
+			if error != null && ! error.empty():
 				abort(owner, error)
 				return
 	
@@ -42,6 +44,7 @@ func process(owner: Dwarf, delta: float):
 
 func physicsProcess(owner: Dwarf, delta: float):
 	assert(! finished, "don't process a finished job: " + get_class())
+	owner.update()
 	
 	if ! currentTask:
 		currentTask = createTask(owner)
@@ -51,7 +54,7 @@ func physicsProcess(owner: Dwarf, delta: float):
 			return
 		else :
 			var error = currentTask.start()
-			if ! error :
+			if error != null && ! error.empty():
 				abort(owner, error)
 				return
 	
@@ -65,8 +68,8 @@ func physicsProcess(owner: Dwarf, delta: float):
 
 func abort(owner: Dwarf, error):
 	print("Dwarf " + str(owner.dwarfId) + " aborts its job and gets unemployed.")
-	print("Reason: " + error)
-	finished = true;
+	print("Reason: " + str(error))
+	finished = true
 	owner.assignJob(load("res://src/job/UnemployedJob.gd").new())
 
 func finish(owner: Dwarf):

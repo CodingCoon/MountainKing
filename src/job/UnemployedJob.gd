@@ -1,8 +1,8 @@
 class_name UnemployedJob extends Job
 
 #---------------------------------------------------- Preload
-var overseer = State.GO_TO_OVERSEER;
-var state
+var overseer
+var state = State.GO_TO_OVERSEER
 #---------------------------------------------------- Parameters
 #---------------------------------------------------- Initialize
 func _init().("UnemployedJob"):
@@ -10,16 +10,16 @@ func _init().("UnemployedJob"):
 
 #---------------------------------------------------- Methods
 func createTask(owner: Dwarf) -> Task:
-	if overseer:
+	if ! overseer:
 		overseer = owner.get_node("../Overseer")
 	
 	match(state):
 		State.GO_TO_OVERSEER:
 			return GoToPointTask.new(owner, overseer.getTarget())
 		State.ASK_FOR_A_JOB:
-			load("res://src/task/GetAJobTask.gd").new(owner, overseer)
+			return load("res://src/task/GetAJobTask.gd").new(owner, overseer)
 		State.WAIT:
-			WaitTask.new(owner)
+			return WaitTask.new(owner)
 	return .createTask(owner)
 
 func taskFinished(owner: Dwarf):

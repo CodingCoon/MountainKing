@@ -36,23 +36,22 @@ func createTask(owner: Dwarf) -> Task:
 func taskFinished(owner: Dwarf):
 	match state:
 		State.FIND_TREE:
-			#afterFindTree()
-			continue
+			afterFindTree()
 		State.RESERVE_TREE:
 			afterReserveTree()
 		State.GO_TO_TREE:
 			state = State.CHOP_TREE
 		State.CHOP_TREE:
-			state = State.GO_TO_STOCK
+			state = State.GO_TO_WAREHOUSE
 			warehouse = owner.get_node("../Warehouse")
-		State.GO_TO_STOCK: 
+		State.GO_TO_WAREHOUSE: 
 			state = State.STOCK_GOODS
 		State.STOCK_GOODS:
 			state = State.FIND_TREE		#TODO maybe check if the dwarf should work further as a lumberjack
 
 
 func afterFindTree():
-	targetTree = .currentTask().foundTree
+	targetTree = currentTask.foundTree
 	if targetTree:
 		state = State.RESERVE_TREE
 	else: 
@@ -62,7 +61,7 @@ func afterFindTree():
 			pass
 
 func afterReserveTree():
-	workingArea = .currentTask().workingArea
+	workingArea = currentTask.workingArea
 	if workingArea:
 		noTreeFoundCount = 0
 		state = State.GO_TO_TREE

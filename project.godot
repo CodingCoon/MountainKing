@@ -25,7 +25,7 @@ _global_script_classes=[ {
 "path": "res://src/actor/Dwarf.gd"
 }, {
 "base": "Task",
-"class": "FindResourceTask",
+"class": "FindTreeTask",
 "language": "GDScript",
 "path": "res://src/resource/tree/FindTreeTask.gd"
 }, {
@@ -70,7 +70,7 @@ _global_script_classes=[ {
 "path": "res://src/actor/Overseer.gd"
 }, {
 "base": "Task",
-"class": "ReserveResourceTask",
+"class": "ReserveTreeTask",
 "language": "GDScript",
 "path": "res://src/resource/tree/ReserveTreeTask.gd"
 }, {
@@ -123,7 +123,7 @@ _global_script_class_icons={
 "ChopWoodTask": "",
 "DoNotDisturbJob": "",
 "Dwarf": "",
-"FindResourceTask": "",
+"FindTreeTask": "",
 "GetAJobTask": "",
 "GoToPointTask": "",
 "GoToTargetTask": "",
@@ -132,7 +132,7 @@ _global_script_class_icons={
 "LumberjackJob": "",
 "NameService": "",
 "Overseer": "",
-"ReserveResourceTask": "",
+"ReserveTreeTask": "",
 "ResourceType": "",
 "Signpost": "",
 "StockResourceTask": "",
@@ -156,6 +156,11 @@ Global="*res://src/actor/Global.gd"
 [debug]
 
 gdscript/warnings/shadowed_variable=false
+
+[display]
+
+window/size/width=1322
+window/size/height=655
 
 [input]
 

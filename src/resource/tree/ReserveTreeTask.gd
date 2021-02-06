@@ -1,4 +1,4 @@
-class_name ReserveResourceTask extends Task
+class_name ReserveTreeTask extends Task
 
 #---------------------------------------------------- Preload
 #---------------------------------------------------- Parameters
@@ -6,7 +6,7 @@ var targetTree	# input
 var workingArea # output
 
 #---------------------------------------------------- Initialize
-func _init(owner: Dwarf, targetTree: TreeRes).(owner):
+func _init(owner: Dwarf, targetTree: TreeRes).(owner, "ReserveTreeTask"):
 	self.targetTree = targetTree
 	
 #---------------------------------------------------- Methods

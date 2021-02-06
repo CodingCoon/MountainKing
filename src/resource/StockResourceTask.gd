@@ -3,7 +3,7 @@ class_name StockResourceTask extends Task
 var warehouse
 var progress = 0
 
-func _init(owner: Dwarf, warehouse).(owner):
+func _init(owner: Dwarf, warehouse).(owner, "StockResourceTask"):
 	self.warehouse = warehouse
 
 func process(delta):

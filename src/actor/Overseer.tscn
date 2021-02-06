@@ -21,4 +21,4 @@ position = Vector2( 0, 24 )
 shape = SubResource( 1 )
 
 [node name="Target" type="Node2D" parent="."]
-position = Vector2( 10, 30 )
+position = Vector2( 10, 41.7071 )

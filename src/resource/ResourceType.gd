@@ -1,6 +1,9 @@
 class_name ResourceType
 
-enum ResourceType {
+static func keys():
+	return Type.keys()
+
+enum Type {
 	WOOD,
 	TIMBER
 }

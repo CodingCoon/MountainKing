@@ -3,7 +3,7 @@ class_name ChopWoodTask extends Task
 var tree : TreeRes
 var progress : float = 0
 
-func _init(owner: Dwarf, tree: TreeRes).(owner):
+func _init(owner: Dwarf, tree: TreeRes).(owner, "ChopWoodTask"):
 	self.tree = tree
 
 func start():

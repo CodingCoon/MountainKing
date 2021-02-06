@@ -13,7 +13,7 @@ func store(resourceType, amount):
 	else:
 		stock[resourceType] = amount
 	
-	print("Stock nun mit " + str(amount) + " " + str(resourceType))
+	print("Stock nun mit " + str(stock[resourceType]) + " " + str(ResourceType.keys()[resourceType]))
 
 func getResource(resourceType, amount):
 	pass

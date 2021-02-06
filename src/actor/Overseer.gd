@@ -25,5 +25,5 @@ func updateUnmeployeed(delta: float):
 		if unemployeed[unemployee] >= ASSIGNMENT_DURATION:
 			#var newJob = load("res://src/job/DoNotDisturbJob.gd")
 			var newJob = load("res://src/resource/tree/LumberjackJob.gd")
-			unemployee.assignJob(newJob.new(unemployee))
+			unemployee.assignJob(newJob.new())
 			unemployeed.erase(unemployee)
